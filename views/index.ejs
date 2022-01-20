@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+        />
+    <link rel="stylesheet" href="../public/styles/main.css" />
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"
+        ></script>
+        <script src="/scripts/bulma.js" defer></script>
+        <script src="/scripts/main.js" defer></script>
+        <title>SellItUp</title>
+    </head>
+    <body class="has-navbar-fixed-top">
+        <!-- https://bulma.io/documentation/components/navbar/#fixed-navbar -->
+        <nav
+        class="navbar is-dark is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+        >
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/products"> All Products </a>
+                <a
+                    role="button"
+                    class="navbar-burger"
+                    aria-label="menu"
+                    aria-expanded="false"
+                    data-target="navbarBasicExample"
+                >
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+                <div class="navbar-menu navbar-end">
+                    <a class="navbar-item" href="/products/new"> New Product </a>
+                </div>
+            </nav>
+        </nav>
+        <section class="hero is-medium has-background-light">
+            <div class="hero-body">
+                <p class="title">All Products</p>
+            </div>
+        </section>
+        <main class="container is-max-widescreen">
+            <div class="columns is-multiline p-5">
+                <% for(let idx = 0; idx < products.length; idx++){ %>
+                    <% const product = products[idx] %>
+            <div class="column is-one-third">
+                <article class="card">
+                    <section class="card-image">
+                        <figure class="image is-3by3">
+                            <img src="<%= product.image %>" alt="Placeholder image" />
+                        </figure>
+            </div>
+            </section>
+                            <div class="card-content">
+                                <div class="content">
+                                    <h3>
+                                    <a href="/products/<%= product.id %>"><%= product.name %> </a>
+                                    </h3>
+                                    <p>$<%= product.price %></p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                <% } %>
+            </div>
+        </main>
+    </body>
+</html>
